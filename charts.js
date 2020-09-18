@@ -62,7 +62,6 @@ function buildCharts(sample) {
 
     // 4. Create a variable that filters the samples for the object with the desired sample number.
     var resultArray = samplesData.filter(sampleObj => sampleObj.id == sample);
-    console.log(resultArray);
 
     //  5. Create a variable that holds the first sample in the array.
     var result = resultArray[0];
@@ -77,9 +76,9 @@ function buildCharts(sample) {
     //  so the otu_ids with the most bacteria are last. 
 
     var yticks = resultIds.slice(0,10).map(elem => `OTU ${elem}`).reverse();
-    console.log(yticks);
+
     var xticks = resultValues.slice(0,10).reverse();
-    console.log(xticks);
+
     var hover = resultLabels.slice(0,10).reverse();
 
     // 8. Create the trace for the bar chart. 
@@ -91,7 +90,7 @@ function buildCharts(sample) {
       text: hover
     }];
     // 9. Create the layout for the bar chart. 
-    var barLayout = {title: "Top 10 Bacteria Cultures Found"
+    var barLayout = {title: "Top 10 Bacteria Cultures Found", paper_bgcolor: "lightsteelblue"
     };
     // 10. Use Plotly to plot the data with the layout. 
     Plotly.newPlot("bar", barData, barLayout);
@@ -114,6 +113,7 @@ function buildCharts(sample) {
     var bubbleLayout = {
       title: "Bacteria Cultures Per Sample",
       xaxis: {title: "OTU ID"},
+      paper_bgcolor: "lightsteelblue",
       automargin: true,
       hovermode: "closest"
     };
@@ -130,7 +130,6 @@ function buildCharts(sample) {
 
     // 3. Create a variable that holds the washing frequency.
     washingFreq = parseFloat(metadataSample.wfreq);
-    console.log(washingFreq);
 
     // 4. Create the trace for the gauge chart.
     var gaugeData = [{
@@ -153,7 +152,8 @@ function buildCharts(sample) {
     }];
     
     // 5. Create the layout for the gauge chart.
-    var gaugeLayout = { 
+    var gaugeLayout = {
+      paper_bgcolor: "lightsteelblue",
       width: 600, height: 450, margin: { t: 0, b: 0 }
     };
 
